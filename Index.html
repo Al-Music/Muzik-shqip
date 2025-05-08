@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALMusics - Muzikë Shqiptare</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #00ff88;
+    }
+    .search-container {
+      margin-bottom: 20px;
+    }
+    .kategoria {
+      margin: 30px auto;
+      max-width: 800px;
+      background-color: #222;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .muzika-lista {
+      list-style-type: none;
+      padding: 0;
+    }
+    .muzika-item {
+      background-color: #333;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .muzika-item a {
+      color: #00ff88;
+      text-decoration: none;
+    }
+    input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+      width: 300px;
+      border: none;
+      border-radius: 5px;
+    }
+    audio {
+      margin-top: 10px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>ALMusics 🎶</h1>
+  <p>Mirë se vini në faqen më të mirë për muzikë shqip!</p>
+
+  <!-- Search Bar -->
+  <div class="search-container">
+    <input type="text" id="search" placeholder="Kërko këngë..." onkeyup="searchMusic()">
+  </div>
+
+  <!-- Lista e Muzikës -->
+  <div class="kategoria">
+    <h2>🎧 Lista e Këngëve</h2>
+    <ul class="muzika-lista" id="music-list">
+      <li class="muzika-item" data-title="Vallja e Tropojës">
+        <span>Vallja e Tropojës</span>
+        <a href="3.Sërish vjen marsi.mp3" download>⬇️ Shkarko</a>
+      </li>
+      <li class="muzika-item" data-title="Muzikë e Qiftelit">
+        <span>Muzikë e Qiftelit</span>
+        <a href="qifteli.mp3" download>⬇️ Shkarko</a>
+      </li>
+      <li class="muzika-item" data-title="Rrëfimi i Shkodrës">
+        <span>Rrëfimi i Shkodrës</span>
+        <a href="rrrefimi.mp3" download>⬇️ Shkarko</a>
+      </li>
+      <li class="muzika-item" data-title="Balada e Dukagjinit">
+        <span>Balada e Dukagjinit</span>
+        <a href="balada.mp3" download>⬇️ Shkarko</a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    function searchMusic() {
+      let input = document.getElementById('search').value.toLowerCase();
+      let items = document.querySelectorAll('.muzika-item');
+
+      items.forEach(item => {
+        let title = item.getAttribute('data-title').toLowerCase();
+        if (title.includes(input)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
